@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spiritual Meditation Path</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Root Variables */
+        :root {
+            --primary: #e4c16f;
+            --primary-dark: #b39856;
+            --bg-dark: #1a1b2d;
+            --bg-card: #26293e;
+            --text-light: #e4e7ee;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Cormorant Garamond', serif;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px rgba(228, 193, 111, 0.3);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        /* Background Effects */
+        .mystical-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(38, 41, 62, 0.8), var(--bg-dark));
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.3;
+            transition: transform 0.2s ease;
+        }
+
+        .particle-large {
+            width: 5px !important;
+            height: 5px !important;
+            filter: blur(1px);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .energy-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: energyFlow 3s linear infinite;
+            opacity: 0.3;
+        }
+
+        /* Instructions Section */
+        .instructions {
+            background: linear-gradient(135deg, rgba(42, 45, 63, 0.9), rgba(53, 56, 73, 0.9));
+            border-left: 5px solid var(--primary);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            font-size: 1.2rem;
+        }
+
+        /* Progress Stats */
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(38, 41, 62, 0.9);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Card Styles */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid rgba(228, 193, 111, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Card States and Effects */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(228, 193, 111, 0.1),
+                transparent
+            );
+            transform: skewX(-15deg);
+            transition: transform 0.6s;
+        }
+
+        .card:hover::after {
+            transform: translateX(50%) skewX(-15deg);
+        }
+
+        .card.completed {
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 20px rgba(228, 193, 111, 0.2);
+        }
+
+        .card.mastered {
+            border: 1px solid #fff;
+            box-shadow: 0 0 25px rgba(228, 193, 111, 0.3);
+            background: linear-gradient(145deg, var(--bg-card), rgba(228, 193, 111, 0.15));
+        }
+
+        /* Learn More Link */
+        .learn-more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .card:hover .learn-more-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .learn-more-link:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        /* Status Indicator */
+        .skill-status {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 25px;
+            height: 25px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(38, 41, 62, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .skill-status:hover {
+            animation: statusPulse 1s infinite;
+        }
+
+        .card.completed .skill-status {
+            background-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .card.completed .skill-status::before {
+            content: '✓';
+            opacity: 1;
+            color: var(--bg-dark);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .card.mastered .skill-status {
+            background-color: #fff;
+            border-color: #fff;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .card.mastered .skill-status::before {
+            content: '★';
+            opacity: 1;
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        /* Level Progress */
+        .level-progress {
+            margin: 1rem auto 2rem;
+            padding: 1rem;
+            background: rgba(38, 41, 62, 0.5);
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .level-progress .progress-bar {
+            height: 8px;
+            background: rgba(228, 193, 111, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(228, 193, 111, 0.2);
+        }
+
+        .level-progress .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            transition: width 0.5s ease;
+            width: 0;
+        }
+
+        .progress-fill.high-progress {
+            background: linear-gradient(90deg, 
+                var(--primary) 0%,
+                #fff 50%,
+                var(--primary) 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+
+        /* Success Message */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(38, 41, 62, 0.95);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 1.5rem;
+            color: var(--text-light);
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .success-message.show {
+            transform: translateX(0);
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            background: rgba(38, 41, 62, 0.95);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px rgba(228, 193, 111, 0.3); }
+            to { text-shadow: 0 0 20px rgba(228, 193, 111, 0.6); }
+        }
+
+        @keyframes energyFlow {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        @keyframes statusPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            .progress-stats { grid-template-columns: 1fr; }
+        }
+
+        /* Add these styles for completion indicators and celebrations */
+.completion-indicator {
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.celebration-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Level completion styles */
+.level[data-completed="true"] .level-title::after {
+    content: '✨';
+    margin-left: 1rem;
+    animation: bounce 1s infinite;
+}
+
+/* Additional animations */
+@keyframes celebrate {
+    100% {
+        transform: translate(
+            calc(var(--x) * 1rem),
+            calc(var(--y) * 1rem)
+        );
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes fade-out {
+    100% { opacity: 0; }
+}
+
+/* Success content styles */
+.success-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.success-content i {
+    font-size: 2rem;
+    color: var(--primary);
+    animation: spin 2s linear infinite;
+}
+
+.success-content h3 {
+    margin: 0;
+    color: var(--primary);
+}
+
+/* Optional tag styles */
+.optional-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(228, 193, 111, 0.2);
+    padding: 0.2rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+/* Progress update animation */
+.progress-update {
+    animation: updatePulse 0.5s ease-out;
+}
+
+@keyframes updatePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Footer styles */
+.footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(42, 45, 63, 0.9), rgba(53, 56, 73, 0.9));
+    border-radius: 10px;
+}
+
+.footer a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--text-light);
+}
+
+/* Level title styles */
+.level-title {
+    font-size: 2rem;
+    color: var(--primary);
+    text-align: center;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.level-title::before,
+.level-title::after {
+    content: '';
+    height: 1px;
+    width: 50px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+    </style>
+</head>
+<body>
+    <div class="mystical-bg" id="mysticalBg"></div>
+
+    <div class="container">
+        <header>
+            <h1>Meditation Path</h1>
+            
+            <div class="instructions">
+                <p>This is an orientative progression, meant to give a sense of direction for the Spiritual Satanist Meditation Path. Customize it to your needs.</p>
+                <p>Follow the Eight-Fold Path of Queen Astarte as you build your routine.</p>
+            </div>
+
+            <div class="progress-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalSkills">0</div>
+                    <div class="stat-label">Total Skills</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="completedSkills">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="masteredSkills">0</div>
+                    <div class="stat-label">Mastered</div>
+                </div>
+            </div>
+        </header>
+
+        <main id="mainContent"></main>
+
+        <footer class="footer">
+            <p>This app is made by @ramses13th from <a href="https://ancient-forums.com/members/ramses13th.73169/">Ancient Forums</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Content Data Structure
+const meditationPath = {
+    requirements: {
+        title: "Requirements",
+        items: [
+            { 
+                id: "study-jos", 
+                title: "Study the entirety of JOS", 
+                icon: "book-open", 
+                description: "Master the fundamental teachings",
+                link: "https://www.joyofsatan.org/main.html"
+            },
+            { 
+                id: "read-wiki", 
+                title: "Read the JOSWIKI", 
+                icon: "scroll", 
+                description: "Essential knowledge database",
+                link: "https://www.satanisgod.org/RTC.html"
+            },
+            { 
+                id: "dedication", 
+                title: "Dedicate your Soul", 
+                icon: "fire-alt", 
+                description: "Spiritual commitment ceremony",
+                link: "https://www.angelfire.com/empire/serpentis666/SATANIC.html"
+            },
+            { 
+                id: "register", 
+                title: "Register at Ancient-Forums", 
+                icon: "users", 
+                description: "Join the community",
+                link: "https://ancient-forums.com"
+            }
+        ]
+    },
+    dailyPractice: {
+        title: "Daily Practice",
+        items: [
+            { 
+                id: "void-meditation", 
+                title: "Void Meditation", 
+                icon: "om", 
+                description: "Clear your mind",
+                link: "https://www.angelfire.com/empire/serpentis666/Void_Meditation.html"
+            },
+            { 
+                id: "cleansing", 
+                title: "Cleansing", 
+                icon: "water", 
+                description: "Purify your energy",
+                link: "https://www.angelfire.com/empire/serpentis666/Aura_Cleaning.html"
+            },
+            { 
+                id: "aura-protection", 
+                title: "Aura of Protection", 
+                icon: "shield-alt", 
+                description: "Build your shields",
+                link: "https://www.angelfire.com/empire/serpentis666/Protection.html"
+            },
+            { 
+                id: "hatha-yoga", 
+                title: "Hatha Yoga", 
+                icon: "pray", 
+                description: "Body alignment",
+                link: "https://www.angelfire.com/empire/serpentis666/Yoga.html"
+            },
+            { 
+                id: "foundation", 
+                title: "Foundation Meditation", 
+                icon: "dice-d20", 
+                description: "Core practice",
+                link: "https://www.angelfire.com/empire/serpentis666/Foundations.html"
+            },
+            { 
+                id: "pranayama", 
+                title: "Pranayamas", 
+                icon: "wind", 
+                description: "Breath control",
+                link: "https://www.angelfire.com/empire/serpentis666/Full_Meditation.html"
+            },
+            { 
+                id: "chakra-meditation", 
+                title: "Full Chakra Meditation", 
+                icon: "dharmachakra", 
+                description: "Energy centers",
+                link: "https://www.angelfire.com/empire/serpentis666/Full_Meditation.html"
+            }
+        ]
+    },
+    skillTree: {
+        title: "Skill Tree",
+        levels: [
+            {
+                level: 1,
+                items: [
+                    { 
+                        id: "trance", 
+                        title: "Trance", 
+                        icon: "brain", 
+                        description: "Altered states",
+                        link: "https://www.angelfire.com/empire/serpentis666/Trance.html"
+                    },
+                    { 
+                        id: "visualization", 
+                        title: "Visualization", 
+                        icon: "eye", 
+                        description: "Mental imagery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Visualization.html"
+                    },
+                    { 
+                        id: "sense-meditation", 
+                        title: "Sense Meditation", 
+                        icon: "star-of-life", 
+                        description: "Sensory awareness",
+                        link: "https://www.angelfire.com/empire/serpentis666/Sensory.html"
+                    },
+                    { 
+                        id: "sense-training", 
+                        title: "Sense Training", 
+                        icon: "fingerprint", 
+                        description: "Refine perception",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    }
+                ]
+            },
+            {
+                level: 2,
+                items: [
+                    { 
+                        id: "clairvoyance", 
+                        title: "Clairvoyance", 
+                        icon: "eye-slash", 
+                        description: "Spiritual sight",
+                        link: "https://www.angelfire.com/empire/serpentis666/Pyschic.html"
+                    },
+                    { 
+                        id: "clairaudience", 
+                        title: "Clairaudience", 
+                        icon: "ear-listen", 
+                        description: "Spiritual hearing",
+                        link: "https://www.angelfire.com/empire/serpentis666/Pyschic.html"
+                    },
+                    { 
+                        id: "astral-senses", 
+                        title: "Astral Senses Empowering", 
+                        icon: "hand-sparkles", 
+                        description: "Strengthen perception",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    },
+                    { 
+                        id: "ectoplasm", 
+                        title: "Ectoplasm", 
+                        icon: "ghost", 
+                        description: "Work with substance",
+                        optional: true,
+                        link: "https://www.angelfire.com/empire/serpentis666/Ectoplasm.html"
+                    }
+                ]
+            },
+            {
+                level: 3,
+                items: [
+                    { 
+                        id: "merging", 
+                        title: "Merging Conscience", 
+                        icon: "infinity", 
+                        description: "Unite with higher self",
+                        link: "https://www.angelfire.com/empire/serpentis666/Merging_Astral_Consciousness.html"
+                    }
+                ]
+            },
+            {
+                level: 4,
+                items: [
+                    { 
+                        id: "invoking-fire", 
+                        title: "Invoking Fire", 
+                        icon: "fire", 
+                        description: "Fire element mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Elements.html"
+                    },
+                    { 
+                        id: "invoking-air", 
+                        title: "Invoking Air", 
+                        icon: "wind", 
+                        description: "Air element mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Elements.html"
+                    },
+                    { 
+                        id: "invoking-water", 
+                        title: "Invoking Water", 
+                        icon: "water", 
+                        description: "Water element mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Elements.html"
+                    },
+                    { 
+                        id: "invoking-earth", 
+                        title: "Invoking Earth", 
+                        icon: "mountain", 
+                        description: "Earth element mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Elements.html"
+                    },
+                    { 
+                        id: "balancing", 
+                        title: "Balancing Elements", 
+                        icon: "balance-scale", 
+                        description: "Harmonize elements",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    }
+                ]
+            }, 
+            {
+                level: 5,
+                items: [
+                    { 
+                        id: "spirit-meditation", 
+                        title: "Meditation on the Spirit", 
+                        icon: "spirit", 
+                        description: "Higher self connection",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    },
+                    { 
+                        id: "astral-meditation", 
+                        title: "Meditation on the Astral Body", 
+                        icon: "user-astral", 
+                        description: "Energy body work",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    },
+                    { 
+                        id: "invoking-akasha", 
+                        title: "Invoking Akasha", 
+                        icon: "universe", 
+                        description: "Fifth element work",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    },
+                    { 
+                        id: "directing-fire", 
+                        title: "Directing Fire", 
+                        icon: "hand-fire", 
+                        description: "Advanced fire work",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    }
+                ]
+            },
+            {
+                level: 6,
+                items: [
+                    { 
+                        id: "astral-projection", 
+                        title: "Astral Projection", 
+                        icon: "astral-plane", 
+                        description: "Beyond physical form",
+                        link: "https://www.angelfire.com/empire/serpentis666/Astral_Projection.html"
+                    },
+                    { 
+                        id: "evoking-fire", 
+                        title: "Evoking Fire", 
+                        icon: "fire-alt", 
+                        description: "Fire mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    },
+                    { 
+                        id: "evoking-air", 
+                        title: "Evoking Air", 
+                        icon: "wind", 
+                        description: "Air mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    },
+                    { 
+                        id: "evoking-water", 
+                        title: "Evoking Water", 
+                        icon: "water", 
+                        description: "Water mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    },
+                    { 
+                        id: "evoking-earth", 
+                        title: "Evoking Earth", 
+                        icon: "mountain", 
+                        description: "Earth mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    },
+                    { 
+                        id: "working-colors", 
+                        title: "Working with Colors", 
+                        icon: "palette", 
+                        description: "Color energy work",
+                        link: "https://www.angelfire.com/empire/serpentis666/Color.html"
+                    },
+                    { 
+                        id: "using-fire", 
+                        title: "Using the Fire Element", 
+                        icon: "fire-circle", 
+                        description: "Supreme fire mastery",
+                        link: "https://www.angelfire.com/empire/serpentis666/Advanced_Meditation.html"
+                    }
+                ]
+            }
+        ]
+    }
+};
+
+class MeditationPathApp {
+    constructor() {
+        this.progressData = {};
+        this.tooltipElement = null;
+        this.initialize();
+    }
+
+    // Initialization Methods
+    initialize() {
+        this.initializeBackground();
+        this.renderContent();
+        this.initializeProgressSystem();
+        this.createTooltip();
+        this.bindEvents();
+        this.addCardEffects();
+    }
+
+    // Background Methods
+    initializeBackground() {
+        const bg = document.getElementById('mysticalBg');
+        // Standard particles
+        for (let i = 0; i < 50; i++) {
+            this.createParticle(bg);
+        }
+        // Energy lines
+        for (let i = 0; i < 10; i++) {
+            this.createEnergyLine(bg);
+        }
+        // Large particles
+        for (let i = 0; i < 10; i++) {
+            const particle = this.createParticle(bg);
+            particle.classList.add('particle-large');
+        }
+    }
+
+    createParticle(container) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const size = Math.random() * 4 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        this.resetParticle(particle);
+        container.appendChild(particle);
+        setInterval(() => this.resetParticle(particle), Math.random() * 5000 + 5000);
+        return particle;
+    }
+
+    resetParticle(particle) {
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.opacity = Math.random() * 0.5 + 0.2;
+    }
+
+    createEnergyLine(container) {
+        const line = document.createElement('div');
+        line.className = 'energy-line';
+        this.resetEnergyLine(line);
+        container.appendChild(line);
+        line.addEventListener('animationend', () => this.resetEnergyLine(line));
+    }
+
+    resetEnergyLine(line) {
+        line.style.width = `${Math.random() * 200 + 100}px`;
+        line.style.left = `${Math.random() * 100}%`;
+        line.style.top = `${Math.random() * 100}%`;
+        line.style.transform = `rotate(${Math.random() * 360}deg)`;
+    }
+
+    // Content Rendering Methods
+    renderContent() {
+        const main = document.getElementById('mainContent');
+        this.renderSection(main, meditationPath.requirements);
+        this.renderSection(main, meditationPath.dailyPractice);
+        this.renderSkillTree(main, meditationPath.skillTree);
+    }
+
+    renderSection(container, section) {
+        const sectionElement = document.createElement('section');
+        sectionElement.className = 'section';
+        sectionElement.innerHTML = `
+            <h2 class="section-title">${section.title}</h2>
+            <div class="grid">
+                ${section.items.map(item => this.createCard(item)).join('')}
+            </div>
+        `;
+        container.appendChild(sectionElement);
+    }
+
+    renderSkillTree(container, skillTree) {
+        const section = document.createElement('section');
+        section.className = 'section';
+        section.innerHTML = `
+            <h2 class="section-title">${skillTree.title}</h2>
+            ${skillTree.levels.map(level => `
+                <div class="level">
+                    <h3 class="level-title">Level ${level.level}</h3>
+                    <div class="level-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-stats">
+                            <span class="progress-current">0 Completed, 0 Mastered</span>
+                            <span class="progress-total">${level.items.length} Total Skills</span>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        ${level.items.map(item => this.createCard(item)).join('')}
+                    </div>
+                </div>
+            `).join('')}
+        `;
+        container.appendChild(section);
+    }
+
+    createCard(item) {
+        return `
+            <div class="card" data-skill-id="${item.id}">
+                <div class="skill-status" title="Click to change status"></div>
+                ${item.optional ? '<span class="optional-tag">Optional</span>' : ''}
+                <div class="card-content">
+                    <i class="card-icon fas fa-${item.icon}"></i>
+                    <h3 class="card-title">${item.title}</h3>
+                    <p class="card-description">${item.description}</p>
+                    ${item.link ? `
+                        <a href="${item.link}" 
+                           class="learn-more-link" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           onclick="event.stopPropagation();"
+                           onerror="this.style.display='none'">
+                            <i class="fas fa-external-link-alt"></i> Learn More
+                        </a>
+                    ` : ''}
+                </div>
+                <div class="completion-indicator"></div>
+            </div>
+        `;
+    }
+
+    // Progress System Methods
+    initializeProgressSystem() {
+        this.loadProgress();
+        this.updateAllStats();
+    }
+
+    loadProgress() {
+        try {
+            this.progressData = JSON.parse(localStorage.getItem('meditationProgress')) || {};
+            this.applyStoredProgress();
+        } catch (e) {
+            console.error('Error loading progress:', e);
+            this.progressData = {};
+        }
+    }
+
+    applyStoredProgress() {
+        document.querySelectorAll('.card').forEach(card => {
+            const skillId = card.dataset.skillId;
+            if (this.progressData[skillId]) {
+                card.classList.add(this.progressData[skillId]);
+            }
+        });
+    }
+
+    updateAllStats() {
+        this.updateTotalStats();
+        document.querySelectorAll('.level').forEach(level => {
+            this.updateLevelProgress(level);
+        });
+    }
+
+    // Progress Tracking and Status Methods
+    cycleSkillStatus(card) {
+        const skillId = card.dataset.skillId;
+        let newStatus;
+
+        if (!card.classList.contains('completed') && !card.classList.contains('mastered')) {
+            newStatus = 'completed';
+        } else if (card.classList.contains('completed')) {
+            newStatus = 'mastered';
+        } else {
+            newStatus = null;
+        }
+
+        this.updateSkillStatus(card, skillId, newStatus);
+    }
+
+    updateSkillStatus(card, skillId, status) {
+        card.classList.remove('completed', 'mastered');
+
+        if (status) {
+            card.classList.add(status);
+            this.progressData[skillId] = status;
+        } else {
+            delete this.progressData[skillId];
+        }
+
+        this.saveProgress();
+        this.updateAllStats();
+        this.addStatusChangeAnimation(card);
+        this.updateLevelProgress(card.closest('.level'));
+    }
+
+    saveProgress() {
+        try {
+            localStorage.setItem('meditationProgress', JSON.stringify(this.progressData));
+        } catch (e) {
+            console.error('Error saving progress:', e);
+        }
+    }
+
+    updateTotalStats() {
+        const stats = this.calculateStats();
+        ['totalSkills', 'completedSkills', 'masteredSkills'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                const newValue = stats[id.replace('Skills', '')];
+                if (element.textContent !== newValue.toString()) {
+                    element.textContent = newValue;
+                    this.animateProgressUpdate(element);
+                }
+            }
+        });
+    }
+
+    calculateStats() {
+        const cards = document.querySelectorAll('.card');
+        return {
+            total: cards.length,
+            completed: document.querySelectorAll('.card.completed').length,
+            mastered: document.querySelectorAll('.card.mastered').length
+        };
+    }
+
+    updateLevelProgress(level) {
+        if (!level) return;
+
+        const stats = {
+            total: level.querySelectorAll('.card').length,
+            completed: level.querySelectorAll('.card.completed').length,
+            mastered: level.querySelectorAll('.card.mastered').length
+        };
+
+        const maxPoints = stats.total * 2;
+        const currentPoints = stats.completed + (stats.mastered * 2);
+        const progress = (currentPoints / maxPoints) * 100;
+
+        const progressBar = level.querySelector('.progress-fill');
+        const currentStats = level.querySelector('.progress-current');
+        const totalStats = level.querySelector('.progress-total');
+
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+            if (progress > 80) {
+                progressBar.classList.add('high-progress');
+            } else {
+                progressBar.classList.remove('high-progress');
+            }
+        }
+
+        if (currentStats) {
+            currentStats.textContent = `${stats.completed} Completed, ${stats.mastered} Mastered`;
+            this.animateProgressUpdate(currentStats);
+        }
+
+        if (totalStats) {
+            totalStats.textContent = `${stats.total} Total Skills`;
+        }
+
+        this.checkLevelCompletion(level);
+    }
+
+    checkLevelCompletion(level) {
+        const stats = {
+            total: level.querySelectorAll('.card').length,
+            completed: level.querySelectorAll('.card.completed').length,
+            mastered: level.querySelectorAll('.card.mastered').length
+        };
+
+        const isCompleted = (stats.completed + stats.mastered) === stats.total;
+        level.setAttribute('data-completed', isCompleted);
+        
+        const progressBar = level.querySelector('.level-progress');
+        if (isCompleted && !level.hasAttribute('data-celebrated')) {
+            progressBar.classList.add('completed');
+            this.celebrateLevelCompletion(level);
+            level.setAttribute('data-celebrated', 'true');
+        } else if (!isCompleted) {
+            progressBar.classList.remove('completed');
+            level.removeAttribute('data-celebrated');
+        }
+    }
+    // Celebration and Animation Methods
+    celebrateLevelCompletion(level) {
+        const levelTitle = level.querySelector('.level-title');
+        levelTitle.style.animation = 'none';
+        levelTitle.offsetHeight; // Trigger reflow
+        levelTitle.style.animation = 'bounce 1s';
+
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'celebration-particle';
+            level.appendChild(particle);
+            
+            const angle = (i / 20) * Math.PI * 2;
+            const velocity = 5 + Math.random() * 5;
+            const x = Math.cos(angle) * velocity;
+            const y = Math.sin(angle) * velocity;
+            
+            particle.style.animation = `
+                celebrate 1s ease-out forwards,
+                fade-out 1s ease-out forwards
+            `;
+            particle.style.setProperty('--x', `${x}`);
+            particle.style.setProperty('--y', `${y}`);
+            
+            setTimeout(() => particle.remove(), 1000);
+        }
+
+        this.showSuccessMessage(levelTitle.textContent);
+    }
+
+    showSuccessMessage(levelName) {
+        const message = document.createElement('div');
+        message.className = 'success-message';
+        message.innerHTML = `
+            <div class="success-content">
+                <i class="fas fa-star"></i>
+                <h3>Level Complete!</h3>
+                <p>${levelName} mastered</p>
+            </div>
+        `;
+        document.body.appendChild(message);
+
+        requestAnimationFrame(() => message.classList.add('show'));
+
+        setTimeout(() => {
+            message.classList.remove('show');
+            setTimeout(() => message.remove(), 500);
+        }, 3000);
+    }
+
+    addStatusChangeAnimation(card) {
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = 'cardComplete 0.5s ease';
+    }
+
+    animateProgressUpdate(element) {
+        element.classList.add('progress-update');
+        element.addEventListener('animationend', () => {
+            element.classList.remove('progress-update');
+        }, { once: true });
+    }
+
+    // Tooltip Methods
+    createTooltip() {
+        this.tooltipElement = document.createElement('div');
+        this.tooltipElement.className = 'tooltip';
+        document.body.appendChild(this.tooltipElement);
+    }
+
+    showTooltip(element, event) {
+        const card = element.closest('.card');
+        const status = this.getSkillStatus(card);
+        this.tooltipElement.textContent = this.getTooltipText(status);
+        this.tooltipElement.style.opacity = '1';
+        this.tooltipElement.style.transform = 'translateY(0)';
+        this.moveTooltip(event);
+    }
+
+    hideTooltip() {
+        this.tooltipElement.style.opacity = '0';
+        this.tooltipElement.style.transform = 'translateY(10px)';
+    }
+
+    moveTooltip(event) {
+        const x = event.pageX;
+        const y = event.pageY;
+        this.tooltipElement.style.left = `${x + 10}px`;
+        this.tooltipElement.style.top = `${y + 10}px`;
+    }
+
+    getSkillStatus(card) {
+        if (card.classList.contains('mastered')) return 'mastered';
+        if (card.classList.contains('completed')) return 'completed';
+        return 'not-started';
+    }
+
+    getTooltipText(status) {
+        switch (status) {
+            case 'mastered':
+                return '✨ Skill Mastered - Click to reset';
+            case 'completed':
+                return '✓ Skill Completed - Click to master';
+            default:
+                return '🔒 Not Started - Click to complete';
+        }
+    }
+
+    // Event Bindings and Effects
+    bindEvents() {
+        document.addEventListener('click', (e) => {
+            const statusDot = e.target.closest('.skill-status');
+            if (statusDot) {
+                const card = statusDot.closest('.card');
+                this.cycleSkillStatus(card);
+            }
+        });
+
+        document.addEventListener('mouseover', (e) => {
+            const statusDot = e.target.closest('.skill-status');
+            if (statusDot) {
+                this.showTooltip(statusDot, e);
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const statusDot = e.target.closest('.skill-status');
+            if (statusDot) {
+                this.hideTooltip();
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const statusDot = e.target.closest('.skill-status');
+            if (statusDot) {
+                this.moveTooltip(e);
+            }
+        });
+
+        document.querySelectorAll('.level-title').forEach(title => {
+            title.addEventListener('click', () => {
+                title.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        document.addEventListener('mousemove', this.createMouseTrail.bind(this));
+    }
+
+    addCardEffects() {
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', this.handleCardMouseMove.bind(this));
+            card.addEventListener('mouseleave', this.handleCardMouseLeave.bind(this));
+        });
+    }
+
+    handleCardMouseMove(e) {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (y - centerY) / 10;
+        const angleY = (centerX - x) / 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02)`;
+    }
+
+    handleCardMouseLeave(e) {
+        const card = e.currentTarget;
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    }
+
+    createMouseTrail(e) {
+        const trail = document.createElement('div');
+        trail.className = 'particle particle-large';
+        trail.style.left = e.pageX + 'px';
+        trail.style.top = e.pageY + 'px';
+        document.getElementById('mysticalBg').appendChild(trail);
+        
+        setTimeout(() => {
+            trail.style.opacity = '0';
+            setTimeout(() => trail.remove(), 500);
+        }, 100);
+    }
+}
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', () => {
+    window.meditationPath = new MeditationPathApp();
+});
+
+</script>
+</body>
+</html>
